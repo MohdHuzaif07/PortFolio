@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mohammed Huzaifa J — Portfolio</title>
+  <meta name="description" content="Portfolio of Mohammed Huzaifa J — UI/UX, Projects, Services, and Contact" />
+
+  <!-- Basic system-friendly font stack -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --card: #f6f7f9;
+      --muted: #6b7280;
+      --text: #0f172a;
+      --accent: #0ea5a4;
+      --glass: rgba(15,23,42,0.06);
+      --glass-2: rgba(15,23,42,0.04);
+      --shadow: 0 6px 18px rgba(12,14,20,0.06);
+      --radius: 12px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      --ff-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    @media (prefers-color-scheme:dark){
+      :root{
+        --bg: #071226;
+        --card: #081226;
+        --muted: #94a3b8;
+        --text: #e6eef8;
+        --accent: #2dd4bf;
+        --glass: rgba(230,238,248,0.04);
+        --glass-2: rgba(230,238,248,0.03);
+        --shadow: 0 6px 18px rgba(0,0,0,0.6);
+      }
+    }
+
+    /* Reset & base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:var(--ff-sans);background:var(--bg);color:var(--text);margin:0;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:28px}
+    header{position:sticky;top:14px;z-index:40}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#60a5fa);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-family:var(--mono)}
+    nav ul{display:flex;gap:14px;list-style:none;padding:0;margin:0}
+    nav li a{padding:8px 10px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted)}
+    nav li a:hover{background:var(--glass);color:var(--text)}
+
+    /* mobile nav */
+    .hamburger{display:none;border:0;background:transparent;font-size:20px}
+    @media (max-width:880px){
+      nav ul{display:none}
+      .hamburger{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 320px;gap:28px;align-items:center;padding:36px;border-radius:14px;background:linear-gradient(180deg,var(--card),transparent);box-shadow:var(--shadow)}
+    .hero h1{margin:0;font-size:clamp(20px,3.2vw,36px)}
+    .tag{color:var(--accent);font-weight:700;margin-top:8px}
+    .hero p.lead{margin:12px 0 18px;color:var(--muted);max-width:58ch}
+    .hero .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;font-weight:700;background:var(--accent);color:var(--bg);border:none;cursor:pointer}
+    .btn.ghost{background:transparent;border:1px solid var(--glass);color:var(--text);font-weight:600}
+
+    .profile-card{background:var(--card);padding:18px;border-radius:12px;text-align:center;box-shadow:var(--shadow)}
+    .avatar{width:140px;height:140px;border-radius:12px;background:var(--glass);margin:0 auto 12px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-weight:700}
+    .socials{display:flex;gap:12px;justify-content:center;margin-top:8px}
+    .socials a{padding:8px;border-radius:8px;background:var(--glass-2);font-size:14px}
+
+    /* Sections */
+    section{padding:46px 0;border-bottom:1px solid var(--glass-2)}
+    section h2{margin:0 0 14px;font-size:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:980px){.hero{grid-template-columns:1fr} .grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.container{padding:18px} .grid{grid-template-columns:1fr} nav ul{display:none}}
+
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+    .muted{color:var(--muted)}
+
+    /* Projects */
+    .project-list{display:grid;gap:12px}
+    .project{display:flex;gap:12px;align-items:center}
+    .project .dot{width:56px;height:56px;border-radius:10px;background:var(--glass);display:flex;align-items:center;justify-content:center;font-weight:700}
+
+    /* Services */
+    .services{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:720px){.services{grid-template-columns:1fr}}
+
+    /* Stats */
+    .stats{display:flex;gap:12px;flex-wrap:wrap}
+    .stat{flex:1;min-width:160px;padding:18px;border-radius:12px;background:linear-gradient(180deg,var(--glass-2),transparent);text-align:center}
+    .stat .num{font-size:22px;font-weight:800;color:var(--accent)}
+
+    /* Footer */
+    footer{padding:24px 0;text-align:center}
+    .backtop{position:fixed;right:18px;bottom:18px;padding:10px 12px;border-radius:10px;background:var(--card);box-shadow:var(--shadow);cursor:pointer}
+
+    /* Small niceties */
+    .lead-small{color:var(--muted);max-width:60ch}
+
+    /* Resume upload placeholder */
+    .resume-box{display:flex;align-items:center;justify-content:space-between;padding:12px;border-radius:10px;border:1px dashed var(--glass);gap:12px}
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <div class="nav">
+        <div class="brand">
+          <div class="logo">MH</div>
+          <div>
+            <div style="font-weight:700">Mohammed Huzaifa J</div>
+            <div class="muted" style="font-size:13px">Aspiring Full-Stack Developer</div>
+          </div>
+        </div>
+
+        <nav>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <main id="hero" class="hero" aria-label="Hero section">
+      <div>
+        <h1>MOHAMMED HUZAIFA J</h1>
+        <div class="tag">Aspiring Full-Stack Developer, Driven by Ambition and Continuous Learning</div>
+        <p class="lead">A 2nd-year Computer Science student building a solid foundation in development, design, and problem-solving — with a mindset to grow fast and work independently.</p>
+        <p class="lead-small">Fast learner. Self-motivated. Determined to create impact through technology.</p>
+
+        <div class="actions" style="margin-top:18px">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn ghost" href="#contact">Contact Me</a>
+        </div>
+
+        <div style="margin-top:18px" class="muted">Socials: 
+          <a href="https://www.linkedin.com/in/mohammedhuzaifa-j" target="_blank">LinkedIn</a> • 
+          <a href="https://github.com/MohdHuzaif07" target="_blank">GitHub</a> • 
+          <a href="mailto:mohdhuxaif817@gmail.com">Email</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile card">
+        <div class="avatar" id="avatar">
+          <img src="Professional_Pic.JPEG" alt="Profile Image" style="width:100%;height:100%;border-radius:12px;object-fit:cover;">
+        </div>
+        <div style="font-weight:700">MOHAMMED HUZAIFA J</div>
+        <div class="muted">2nd Year — CSE Student</div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/mohammedhuzaifa-j" target="_blank">LinkedIn</a>
+          <a href="https://github.com/MohdHuzaif07" target="_blank">GitHub</a>
+        </div>
+      </aside>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>I’m Mohammed Huzaifa J, a motivated and self-improving 2nd-year Computer Science engineering student from Chennai, currently building my foundation in full-stack development, UI/UX design, and core programming skills.</p>
+        <p>I started with almost no technical exposure, but my curiosity and consistency helped me progress quickly. I learn fast, adapt quickly, and push myself to stay better than yesterday. I believe in focused growth and taking responsibility for my own journey.</p>
+        <p>Earlier, I worked as a <strong>tutor for 1 year</strong>, which strengthened my discipline and communication. Now, I’m fully focused on developing my technical skills, building meaningful projects, and shaping a solid future for myself.</p>
+
+        <ul style="margin-top:10px">
+          <li>Fast learner with strong adaptability</li>
+          <li>Focused on full-stack development, Java, and Python</li>
+          <li>Interest in clean UI/UX and modern digital design</li>
+          <li>Growth-driven mindset with long-term goals</li>
+          <li>Committed to consistency, productivity, and self-improvement</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Core Technical Skills</h3>
+          <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+            <li>Java</li>
+            <li>SQL</li>
+            <li>C</li>
+            <li>C++</li>
+            <li>Git & GitHub</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>UI/UX Skills</h3>
+          <ul>
+            <li>Wireframing</li>
+            <li>Figma Designing</li>
+            <li>Figma Prototyping</li>
+            <li>Layout Structuring</li>
+            <li>Color Theory & Visual Hierarchy</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Soft & Personal Skills</h3>
+          <ul>
+            <li>Fast Learning</li>
+            <li>Adaptability</li>
+            <li>Communication</li>
+            <li>Teaching Ability</li>
+            <li>Creative Thinking</li>
+            <li>Prompt Engineering</li>
+            <li>Sportsmanship</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project card">
+          <div class="dot">SW</div>
+          <div>
+            <strong>Schrödinger Wave Equation Calculator</strong>
+            <div class="muted">A physics-based computational project to calculate and represent values related to the Schrödinger Wave Equation.</div>
+          </div>
+        </div>
+
+        <div class="project card">
+          <div class="dot">HC</div>
+          <div>
+            <strong>Health Chatbot</strong>
+            <div class="muted">A Python-based health chatbot that gives basic health guidance using conditional logic and structured inputs.</div>
+          </div>
+        </div>
+
+        <div class="project card">
+          <div class="dot">WT</div>
+          <div>
+            <strong>Premium Watch Website – UI/UX Design</strong>
+            <div class="muted">A modern design concept for a premium watch brand showcasing clean layouts, product-focused UI, and brand aesthetics.</div>
+          </div>
+        </div>
+
+        <div class="project card">
+          <div class="dot">CS</div>
+          <div>
+            <strong>Community Complaint Management System (Coming Soon)</strong>
+            <div class="muted">Full-stack project planned for registering and tracking community complaints.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements">
+      <h2>Achievements & Certifications</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Achievements</h3>
+          <ul>
+            <li>Selected for 1M1B Green Internship Program (Batch 6)</li>
+            <li>Completed personal coding projects such as Schrödinger Wave Equation calculator and Health Chatbot</li>
+            <li>Created a Watch Website UI Design in Figma</li>
+            <li>Worked as a tutor for 1 year</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Certifications</h3>
+          <ul>
+            <li>Introduction to Java Programming – College Training</li>
+            <li>Python Basics for Data Science – IBM Skills Network</li>
+            <li>Frontend Foundations – HTML & CSS</li>
+            <li>Figma for UI/UX Design – Workshop</li>
+            <li>SQL Fundamentals – SoloLearn / HackerRank</li>
+            <li>Prompt Engineering Essentials – Self-learning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME (Placeholder) -->
+
+    <!-- SERVICES -->
+    <section id="services">
+      <h2>Services</h2>
+      <div class="services">
+        <div class="card"><strong>UI/UX Design</strong><div class="muted">Modern, clean interfaces with focus on hierarchy and flow</div></div>
+        <div class="card"><strong>Landing Page Design</strong><div class="muted">High-impact landing pages optimized for clarity</div></div>
+        <div class="card"><strong>Portfolio Building Assistance</strong><div class="muted">Structure, visuals, and content guidance</div></div>
+        <div class="card"><strong>Figma Prototyping</strong><div class="muted">Interactive prototypes for testing and demos</div></div>
+        <div class="card"><strong>Prompt Engineering</strong><div class="muted">AI prompt workflows and ideation</div></div>
+        <div class="card"><strong>Technical Tutoring</strong><div class="muted">Concept clarity and mentoring</div></div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog">
+      <h2>Blog</h2>
+      <div class="card">
+        <p>My journey in tech has never been about shortcuts or natural talent; it has been about learning to build myself piece by piece, even when I started from zero. As a CSE student figuring out life, I learned early that discipline matters more than motivation, and progress is built quietly through consistent effort. From designing my own growth roadmap when everything felt overwhelming, to discovering UI/UX as a space where my creativity and structure finally aligned, every step taught me something about who I am becoming. Working on projects like the Schrödinger Wave Equation calculator and a Health Chatbot showed me that even tough concepts become manageable when approached with patience and curiosity. My time as a tutor strengthened my communication, clarity, and responsibility—skills that shaped the way I learn today. Along the way, prompt engineering opened an entirely new dimension for me, allowing me to think faster, ideate better, and use AI as a genuine extension of my creativity. Balancing studies, skill development, personal struggles, distractions, and ambition hasn’t been easy, but it taught me resilience, focus, and the importance of showing up every day. These blogs reflect the honest version of my journey—how I think, what I create, what I struggle with, and how I keep pushing forward despite challenges.</p>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section id="stats">
+      <h2>Stats</h2>
+      <div class="stats">
+        <div class="stat card"><div class="num" data-target="2">0</div><div class="muted">Projects Completed</div></div>
+        <div class="stat card"><div class="num" data-target="10">0</div><div class="muted">Skills</div></div>
+        <div class="stat card"><div class="num" data-target="1">0</div><div class="muted">Year Teaching</div></div>
+        <div class="stat card"><div class="num" data-target="300">0</div><div class="muted">Hours Learning</div></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="card">
+        <p>If you’d like to collaborate, discuss ideas, or just say hi — reach out through any channel below.</p>
+        <ul>
+          <li>Email: <a href="mailto:mohdhuxaif817@gmail.com">mohdhuxaif817@gmail.com</a></li>
+          <li>LinkedIn: <a href="https://www.linkedin.com/in/mohammedhuzaifa-j" target="_blank">linkedin.com/in/mohammedhuzaifa-j</a></li>
+          <li>GitHub: <a href="https://github.com/MohdHuzaif07" target="_blank">github.com/MohdHuzaif07</a></li>
+          <li>Location: Chennai, India</li>
+        </ul>
+
+        <form onsubmit="handleContact(event)" style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+          <input name="name" placeholder="Your name" required style="padding:10px;border-radius:8px;border:1px solid var(--glass)">
+          <input name="email" placeholder="Your email" required style="padding:10px;border-radius:8px;border:1px solid var(--glass)">
+          <textarea name="message" placeholder="Message" required style="padding:10px;border-radius:8px;border:1px solid var(--glass);min-height:100px"></textarea>
+          <button class="btn" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="muted">© 2025 Mohammed Huzaifa J — Built with focus, discipline, and continuous improvement.</div>
+    </footer>
+
+  </div>
+
+  <button class="backtop" title="Back to top" onclick="scrollToTop()">⬆️</button>
+
+  <script>
+    // Mobile nav toggle
+    function toggleMenu(){
+      const ul = document.querySelector('nav ul');
+      if(!ul) return;
+      ul.style.display = ul.style.display === 'flex' ? 'none':'flex';
+      ul.style.flexDirection = 'column';
+      ul.style.background = 'var(--card)';
+      ul.style.padding = '12px';
+      ul.style.position = 'absolute';
+      ul.style.right = '18px';
+      ul.style.top = '68px';
+      ul.style.borderRadius = '10px';
+      ul.style.boxShadow = 'var(--shadow)';
+    }
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',function(e){
+        const href = this.getAttribute('href');
+        if(href === '#') return;
+        const el = document.querySelector(href);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    })
+
+    // Back to top
+    function scrollToTop(){window.scrollTo({top:0,behavior:'smooth'})}
+
+    // Simple stats counter when visible
+    const nums = document.querySelectorAll('.num');
+    const speed = 40; // lower is faster
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          const el = entry.target;
+          const target = +el.getAttribute('data-target');
+          let count = 0;
+          const inc = Math.ceil(target / speed);
+          const timer = setInterval(()=>{
+            count += inc;
+            if(count >= target){el.textContent = target;clearInterval(timer)}else{el.textContent = count}
+          },40);
+          obs.unobserve(el);
+        }
+      })
+    },{threshold:0.5});
+    nums.forEach(n=>obs.observe(n));
+
+    // Handle resume upload - convert to object URL and show link
+    function handleResume(e){
+      const file = e.target.files[0];
+      if(!file) return;
+      if(file.type !== 'application/pdf') return alert('Please upload a PDF');
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(file);
+      link.download = file.name;
+      link.textContent = 'Download Resume';
+      link.className = 'btn';
+      const box = document.querySelector('#resume .resume-box');
+      if(box){
+        box.innerHTML = '';
+        box.appendChild(link);
+      }
+    }
+
+    // Basic contact handler (no server) - copies message to clipboard as placeholder
+    function handleContact(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if(!name||!email||!message){alert('Please fill the form');return}
+      const summary = `Contact from ${name} <${email}>:\n${message}`;
+      navigator.clipboard && navigator.clipboard.writeText(summary).then(()=>{
+        alert('Message copied to clipboard (demo). You can paste it into your email to follow up.');
+        form.reset();
+      }).catch(()=>{alert('Message ready (demo). Copy from the form manually.')});
+    }
+
+    // Small accessibility: focus visible outline
+    document.addEventListener('keydown',e=>{if(e.key==='Tab')document.body.classList.add('show-focus')});
+  </script>
+</body>
+</html>
