@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply antialiased overflow-hidden;
+    }
+}
+
+@layer utilities {
+    .neon-glow-light {
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5), 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .neon-glow-dark {
+        box-shadow: 0 0 10px rgba(34, 211, 238, 0.5), 0 0 20px rgba(34, 211, 238, 0.3);
+    }
+
+    .neon-border {
+        @apply border-indigo-500 neon-glow-light dark:border-cyan-400 dark:neon-glow-dark;
+    }
+
+    .neon-text {
+        @apply text-indigo-600 dark:text-cyan-400;
+        filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.8));
+    }
+
+    .dark .neon-text {
+        filter: drop-shadow(0 0 8px rgba(34, 211, 238, 0.8));
+    }
+}
+
+/* Hide scrollbar for bento grid */
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+html.dark {
+    color-scheme: dark;
+}
