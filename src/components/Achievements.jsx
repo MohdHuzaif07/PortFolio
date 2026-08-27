@@ -73,7 +73,7 @@ const Achievements = () => {
                         transition={{ type: "spring", stiffness: 100, delay: 0.5 }}
                         className="text-5xl font-extrabold text-slate-800 dark:text-slate-100 mb-2"
                     >
-                        9.02
+                        9.25
                     </motion.h3>
                     <p className="text-lg font-medium text-slate-600 dark:text-slate-400">CGPA</p>
                     <p className="text-sm text-slate-500 mt-4">Easwari Engineering College</p>
