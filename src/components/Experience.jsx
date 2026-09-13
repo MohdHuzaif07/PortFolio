@@ -4,7 +4,11 @@ import { Leaf } from 'lucide-react';
 
 const Experience = () => {
     return (
-        <section id="experience" className="w-full min-h-screen snap-always snap-center flex flex-col justify-center items-center px-4 py-20 bg-white dark:bg-black transition-colors duration-500">
+        <section
+            id="experience"
+            className="w-full min-h-screen snap-always snap-center flex flex-col justify-center items-center px-4 py-20 transition-colors duration-300"
+            style={{ backgroundColor: 'var(--surface)' }}
+        >
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -12,34 +16,75 @@ const Experience = () => {
                 transition={{ duration: 0.8 }}
                 className="max-w-4xl w-full"
             >
-                <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-slate-800 dark:text-slate-100">
-                    Experience & Impact
-                </h2>
+                {/* Section header */}
+                <div className="mb-12">
+                    <div className="module-id mb-3">// SYS-EXP-001</div>
+                    <h2 className="section-heading">Experience &amp; Impact</h2>
+                    <div className="accent-bar mt-3" style={{ maxWidth: '120px' }} />
+                </div>
 
-                <div className="relative border-l-2 border-indigo-200 dark:border-cyan-900 ml-4 md:ml-8 pl-8 md:pl-12 py-4">
-                    <div className="absolute w-8 h-8 rounded-full bg-indigo-100 border-4 border-indigo-500 dark:bg-slate-800 dark:border-cyan-400 -left-[17px] top-6 flex items-center justify-center neon-glow-light dark:neon-glow-dark">
-                        <Leaf className="w-4 h-4 text-indigo-600 dark:text-cyan-400" />
+                {/* Timeline */}
+                <div
+                    className="relative ml-4 md:ml-8 pl-8 md:pl-12 py-4"
+                    style={{ borderLeft: '3px solid var(--border-subtle)' }}
+                >
+                    {/* Timeline node */}
+                    <div
+                        className="absolute -left-[17px] top-6 icon-box"
+                        style={{ width: '2rem', height: '2rem', backgroundColor: 'var(--accent)' }}
+                    >
+                        <Leaf className="w-4 h-4" style={{ color: '#111111' }} />
                     </div>
 
-                    <div className="bg-slate-50 dark:bg-slate-900/50 p-6 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                        <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    {/* Experience card */}
+                    <motion.div
+                        whileHover={{ x: 4 }}
+                        transition={{ duration: 0.15 }}
+                        className="brutalist-card p-6 md:p-8"
+                    >
+                        {/* Accent bar top */}
+                        <div className="accent-bar mb-5" />
+
+                        <div className="flex flex-col md:flex-row md:items-start justify-between mb-5 gap-3">
                             <div>
-                                <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                                <div className="module-id mb-2">Role — Intern</div>
+                                <h3
+                                    className="mb-1"
+                                    style={{
+                                        fontFamily: "'Barlow Condensed', sans-serif",
+                                        fontWeight: 700,
+                                        fontSize: 'clamp(1.3rem, 3vw, 1.8rem)',
+                                        color: 'var(--text)',
+                                        letterSpacing: '-0.01em',
+                                        textTransform: 'uppercase',
+                                    }}
+                                >
                                     Green Internship
                                 </h3>
-                                <h4 className="text-lg text-indigo-600 dark:text-cyan-400 font-medium">
+                                <h4
+                                    style={{
+                                        fontFamily: "'JetBrains Mono', monospace",
+                                        fontSize: '0.85rem',
+                                        color: 'var(--accent)',
+                                        fontWeight: 600,
+                                    }}
+                                >
                                     1M1B (1 Million for 1 Billion)
                                 </h4>
                             </div>
-                            <span className="text-sm md:text-base text-indigo-600 dark:text-cyan-400 mt-2 md:mt-0 font-medium bg-indigo-50 dark:bg-cyan-950/50 border border-indigo-100 dark:border-cyan-900 px-4 py-1.5 rounded-full inline-block">
-                                Sustainability & Problem-Solving
+                            <span
+                                className="brutalist-tag-accent flex-shrink-0 self-start"
+                            >
+                                Sustainability &amp; Problem-Solving
                             </span>
                         </div>
 
-                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
+                        <hr className="sys-divider mb-5" />
+
+                        <p style={{ color: 'var(--text-muted)', lineHeight: '1.75', fontSize: '0.95rem', fontFamily: "'Inter', sans-serif" }}>
                             Engaged in a purpose-driven internship focused on global sustainability challenges. Developed core problem-solving methodologies to tackle real-world climate and operational issues. The experience honed my ability to fuse technological solutions with sustainable, long-term impact strategies.
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </motion.div>
         </section>

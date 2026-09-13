@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CustomCursor = () => {
     const [isVisible, setIsVisible] = useState(false);
-    
+
     const cursorX = useMotionValue(-100);
     const cursorY = useMotionValue(-100);
 
@@ -13,8 +13,8 @@ const CustomCursor = () => {
 
     useEffect(() => {
         const moveCursor = (e) => {
-            cursorX.set(e.clientX - 16); // 16 is half the width/height of the cursor
-            cursorY.set(e.clientY - 16);
+            cursorX.set(e.clientX - 14);
+            cursorY.set(e.clientY - 14);
             if (!isVisible) setIsVisible(true);
         };
 
@@ -32,15 +32,20 @@ const CustomCursor = () => {
         };
     }, [cursorX, cursorY, isVisible]);
 
-    if (window.innerWidth < 768) return null; // Avoid rendering on mobile/touch screens
+    if (window.innerWidth < 768) return null;
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-indigo-500/50 dark:border-cyan-400/50 pointer-events-none z-[100] mix-blend-difference hidden md:block"
+            className="fixed top-0 left-0 pointer-events-none z-[100] hidden md:block"
             style={{
                 x: cursorXSpring,
                 y: cursorYSpring,
-                opacity: isVisible ? 1 : 0
+                opacity: isVisible ? 1 : 0,
+                width: '28px',
+                height: '28px',
+                border: '2px solid var(--accent)',
+                borderRadius: '2px',
+                mixBlendMode: 'difference',
             }}
         />
     );

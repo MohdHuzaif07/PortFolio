@@ -2,88 +2,108 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, Globe, Database, Wrench } from 'lucide-react';
 
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+const SkillCategory = ({ icon: Icon, label, children, index }) => (
+    <motion.div
+        variants={itemVariants}
+        className="brutalist-card p-6 flex flex-col gap-4"
+    >
+        {/* Accent top bar */}
+        <div className="accent-bar -mt-6 -mx-6 mb-2" style={{ margin: '-24px -24px 8px -24px', borderRadius: '2px 2px 0 0' }} />
+
+        {/* Header */}
+        <div className="flex items-center gap-3">
+            <div className="icon-box" style={{ color: 'var(--accent)' }}>
+                <Icon className="w-4 h-4" />
+            </div>
+            <div>
+                <div className="sys-label" style={{ fontSize: '0.6rem' }}>Module {String(index).padStart(2, '0')}</div>
+                <h3
+                    style={{
+                        fontFamily: "'Barlow Condensed', sans-serif",
+                        fontWeight: 700,
+                        fontSize: '1.15rem',
+                        letterSpacing: '0.02em',
+                        textTransform: 'uppercase',
+                        color: 'var(--text)',
+                    }}
+                >
+                    {label}
+                </h3>
+            </div>
+        </div>
+
+        <hr className="sys-divider" />
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2">
+            {children}
+        </div>
+    </motion.div>
+);
+
 const Skills = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-            },
-        },
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-    };
-
     return (
-        <section id="skills" className="w-full min-h-screen snap-always snap-center flex flex-col justify-center items-center px-4 py-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-500">
-            <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-slate-800 dark:text-slate-100">
-                Technical Skills
-            </h2>
+        <section
+            id="skills"
+            className="w-full min-h-screen snap-always snap-center flex flex-col justify-center items-center px-4 py-20 transition-colors duration-300"
+            style={{ backgroundColor: 'var(--bg-primary)' }}
+        >
+            {/* Section header */}
+            <div className="max-w-6xl w-full mb-12">
+                <div className="module-id mb-3">// SYS-SKL-001</div>
+                <h2 className="section-heading">Technical Stack</h2>
+                <div className="accent-bar mt-3" style={{ maxWidth: '120px' }} />
+            </div>
 
             <motion.div
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl w-full"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl w-full"
             >
                 {/* Languages */}
-                <motion.div variants={itemVariants} className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-indigo-500 dark:border-t-cyan-400">
-                    <div className="w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mb-6">
-                        <Code2 className="w-6 h-6 text-indigo-600 dark:text-cyan-400" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100">Languages</h3>
-                    <ul className="space-y-3 text-slate-600 dark:text-slate-400 font-medium">
-                        <li>Java</li>
-                        <li>C & C++</li>
-                        <li>Python</li>
-                        <li>JavaScript</li>
-                    </ul>
-                </motion.div>
+                <SkillCategory icon={Code2} label="Languages" index={1}>
+                    {['Java', 'C', 'C++', 'Python', 'JavaScript'].map(s => (
+                        <span key={s} className="brutalist-tag">{s}</span>
+                    ))}
+                </SkillCategory>
 
                 {/* Web Technologies */}
-                <motion.div variants={itemVariants} className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-indigo-500 dark:border-t-cyan-400 md:col-span-2 lg:col-span-1">
-                    <div className="w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mb-6">
-                        <Globe className="w-6 h-6 text-indigo-600 dark:text-cyan-400" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100">Web</h3>
-                    <ul className="space-y-3 text-slate-600 dark:text-slate-400 font-medium grid grid-cols-2 gap-x-2 lg:block">
-                        <li>React</li>
-                        <li>Node.js & Express.js</li>
-                        <li>MongoDB (MERN)</li>
-                        <li>Spring Boot</li>
-                        <li>REST APIs</li>
-                    </ul>
-                </motion.div>
+                <SkillCategory icon={Globe} label="Web" index={2}>
+                    {['React', 'Node.js', 'Express.js', 'MongoDB', 'MERN', 'Spring Boot', 'REST APIs'].map(s => (
+                        <span key={s} className="brutalist-tag">{s}</span>
+                    ))}
+                </SkillCategory>
 
                 {/* Core CS */}
-                <motion.div variants={itemVariants} className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-indigo-500 dark:border-t-cyan-400">
-                    <div className="w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mb-6">
-                        <Database className="w-6 h-6 text-indigo-600 dark:text-cyan-400" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100">Core CS</h3>
-                    <ul className="space-y-3 text-slate-600 dark:text-slate-400 font-medium">
-                        <li>Data Structures & Algorithms <span className="block text-xs text-indigo-500 dark:text-cyan-500 mt-1">(660+ solved)</span></li>
-                        <li>MySQL</li>
-                    </ul>
-                </motion.div>
+                <SkillCategory icon={Database} label="Core CS" index={3}>
+                    <span className="brutalist-tag">DSA</span>
+                    <span
+                        className="brutalist-tag-accent"
+                        title="660+ problems solved across LeetCode, CodeChef, GFG & HackerRank"
+                    >
+                        660+ Solved
+                    </span>
+                    <span className="brutalist-tag">MySQL</span>
+                </SkillCategory>
 
                 {/* Tools */}
-                <motion.div variants={itemVariants} className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-sm border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-t-indigo-500 dark:border-t-cyan-400 md:col-span-1 lg:col-span-1">
-                    <div className="w-12 h-12 rounded-full bg-indigo-50 dark:bg-slate-700 flex items-center justify-center mb-6">
-                        <Wrench className="w-6 h-6 text-indigo-600 dark:text-cyan-400" />
-                    </div>
-                    <h3 className="text-xl font-bold mb-4 text-slate-800 dark:text-slate-100">Tools</h3>
-                    <ul className="space-y-3 text-slate-600 dark:text-slate-400 font-medium">
-                        <li>Git & GitHub</li>
-                        <li>VS Code</li>
-                        <li>Google AI Studio</li>
-                    </ul>
-                </motion.div>
+                <SkillCategory icon={Wrench} label="Tools" index={4}>
+                    {['Git', 'GitHub', 'VS Code', 'Google AI Studio'].map(s => (
+                        <span key={s} className="brutalist-tag">{s}</span>
+                    ))}
+                </SkillCategory>
             </motion.div>
         </section>
     );
