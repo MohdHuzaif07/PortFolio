@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, Code, Languages, ArrowUpRight } from 'lucide-react';
+import { Linkedin, Github, Mail, Phone, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -7,7 +7,7 @@ const Footer = () => {
             <div className="editorial-wrap">
                 {/* Section Header */}
                 <div className="section-heading-group">
-                    <span className="section-index">06</span>
+                    <span className="section-index">07</span>
                     <h2 className="section-title">GET IN TOUCH</h2>
                     <div className="section-rule" />
                 </div>
@@ -54,32 +54,33 @@ const Footer = () => {
                         </small>
                     </a>
 
-                    {/* LeetCode */}
+                    {/* Email */}
                     <a
-                        href="https://leetcode.com/u/MohdHuzaif07/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="mailto:mohdhuxaif817@gmail.com"
                         className="contact-card group"
                     >
-                        <Code className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--maroon-bright)] transition-colors" />
+                        <Mail className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--maroon-bright)] transition-colors" />
                         <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--maroon-bright)] transition-colors flex items-center gap-1">
-                            LeetCode <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            Email <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </span>
                         <small className="text-[11px] font-mono text-[var(--muted)] break-all">
-                            660+ Solved &bull; Ambassador
+                            mohdhuxaif817@gmail.com
                         </small>
                     </a>
 
-                    {/* Languages & Communication */}
-                    <div className="contact-card lg:border-r-0">
-                        <Languages className="w-4 h-4 text-[var(--maroon-bright)]" />
-                        <span className="text-sm font-semibold text-[var(--ink)]">
-                            Languages
+                    {/* Phone / Mobile */}
+                    <a
+                        href="tel:+919361637470"
+                        className="contact-card lg:border-r-0 group"
+                    >
+                        <Phone className="w-4 h-4 text-[var(--muted)] group-hover:text-[var(--maroon-bright)] transition-colors" />
+                        <span className="text-sm font-semibold text-[var(--ink)] group-hover:text-[var(--maroon-bright)] transition-colors flex items-center gap-1">
+                            Phone <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </span>
-                        <small className="text-[11px] font-mono text-[var(--muted)] leading-relaxed">
-                            English, Hindi, Tamil, Urdu &bull; Japanese (JLPT N5)
+                        <small className="text-[11px] font-mono text-[var(--muted)] break-all">
+                            +91 93616 37470
                         </small>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Footer Copyright */}

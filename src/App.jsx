@@ -6,6 +6,7 @@ import {
     Skills,
     Projects,
     Achievements,
+    Languages,
     Footer,
     CustomCursor
 } from './components';
@@ -40,6 +41,7 @@ function App() {
                 <Skills />
                 <Projects />
                 <Achievements />
+                <Languages />
             </main>
 
             {/* Contact & Editorial Footer */}
