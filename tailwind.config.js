@@ -8,27 +8,27 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                display: ['Barlow Condensed', 'sans-serif'],
+                silkscreen: ['Silkscreen', 'monospace'],
+                display: ['Silkscreen', 'monospace'],
                 mono: ['JetBrains Mono', 'monospace'],
                 sans: ['Inter', 'sans-serif'],
             },
             colors: {
-                // Light mode palette
-                cream: {
-                    DEFAULT: '#F4EEDB',
-                    surface: '#FFFCF5',
+                void: '#0a0908',
+                panel: {
+                    DEFAULT: '#131110',
+                    alt: '#1a1716',
                 },
-                // Accents
-                yellow: {
-                    DEFAULT: '#FFC51B',
-                },
-                red: {
-                    DEFAULT: '#E53935',
-                    bright: '#FF4A45',
+                line: '#2a2523',
+                ink: '#ede8e3',
+                muted: '#8f857e',
+                maroon: {
+                    DEFAULT: '#8c2438',
+                    bright: '#b4324c',
                 },
                 success: {
-                    light: '#10A37F',
-                    dark: '#00C896',
+                    DEFAULT: '#10A37F',
+                    bright: '#00C896',
                 },
             },
             animation: {

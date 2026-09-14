@@ -4,17 +4,18 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 const CustomCursor = () => {
     const [isVisible, setIsVisible] = useState(false);
 
-    const cursorX = useMotionValue(-100);
-    const cursorY = useMotionValue(-100);
+    // Halo position (440px wide halo centered on cursor)
+    const cursorX = useMotionValue(-500);
+    const cursorY = useMotionValue(-500);
 
-    const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
-    const cursorXSpring = useSpring(cursorX, springConfig);
-    const cursorYSpring = useSpring(cursorY, springConfig);
+    const springConfig = { damping: 30, stiffness: 200, mass: 0.8 };
+    const springX = useSpring(cursorX, springConfig);
+    const springY = useSpring(cursorY, springConfig);
 
     useEffect(() => {
         const moveCursor = (e) => {
-            cursorX.set(e.clientX - 14);
-            cursorY.set(e.clientY - 14);
+            cursorX.set(e.clientX - 220);
+            cursorY.set(e.clientY - 220);
             if (!isVisible) setIsVisible(true);
         };
 
@@ -32,20 +33,14 @@ const CustomCursor = () => {
         };
     }, [cursorX, cursorY, isVisible]);
 
-    if (window.innerWidth < 768) return null;
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return null;
 
     return (
         <motion.div
-            className="fixed top-0 left-0 pointer-events-none z-[100] hidden md:block"
+            className={`cursor-halo ${isVisible ? 'cursor-halo-active' : ''}`}
             style={{
-                x: cursorXSpring,
-                y: cursorYSpring,
-                opacity: isVisible ? 1 : 0,
-                width: '28px',
-                height: '28px',
-                border: '2px solid var(--accent)',
-                borderRadius: '2px',
-                mixBlendMode: 'difference',
+                x: springX,
+                y: springY,
             }}
         />
     );

@@ -1,145 +1,176 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
-import CanvasParticles from './CanvasParticles';
+import { ArrowRight, Terminal } from 'lucide-react';
 import profilePic from '../assets/images/Professional_Pic.jpeg';
 
 const Hero = () => {
     return (
         <section
             id="hero"
-            className="relative w-full min-h-screen snap-always snap-center flex justify-center items-center px-4 overflow-hidden transition-colors duration-300"
-            style={{ backgroundColor: 'var(--bg-primary)' }}
+            className="relative w-full pt-36 pb-24 md:pt-44 md:pb-32 overflow-hidden"
+            style={{ backgroundColor: 'var(--void)' }}
         >
-            <CanvasParticles />
-
-            {/* Top system status bar */}
+            {/* Ambient background glow */}
             <div
-                className="absolute top-0 left-0 right-0 flex items-center justify-between px-5 py-2.5 z-20"
+                className="absolute top-20 -left-44 w-[650px] h-[500px] pointer-events-none opacity-50"
                 style={{
-                    borderBottom: '1.5px solid var(--border-subtle)',
-                    backgroundColor: 'var(--surface)',
+                    background: 'radial-gradient(ellipse, rgba(140, 36, 56, 0.12), transparent 68%)',
                 }}
-            >
-                <div className="flex items-center gap-2">
-                    <span className="status-online" />
-                    <span className="sys-label">System Status // Online</span>
-                </div>
-                <span className="sys-label hidden sm:block">Dev-Terminal v2.0</span>
-            </div>
+            />
 
-            <div className="z-10 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16 max-w-6xl w-full mt-8">
+            <div className="editorial-wrap relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-                {/* Text Content */}
+                {/* Left Column: Typography & Content */}
                 <motion.div
-                    initial={{ y: 50, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.2 }}
-                    className="flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="lg:col-span-7 flex flex-col items-start"
                 >
-                    {/* Module label */}
-                    <div className="module-id mb-4">Developer Profile // 001</div>
+                    {/* Eyebrow */}
+                    <div className="eyebrow mb-6">
+                        <span className="eyebrow-dot" />
+                        <span>DEVELOPER PROFILE // ENG-001</span>
+                    </div>
 
-                    {/* Name */}
+                    {/* Main Name in Silkscreen */}
                     <h1
-                        className="mb-3 uppercase leading-none tracking-tight"
-                        style={{
-                            fontFamily: "'Barlow Condensed', sans-serif",
-                            fontWeight: 900,
-                            fontSize: 'clamp(2.8rem, 8vw, 5.5rem)',
-                            color: 'var(--text)',
-                        }}
+                        className="text-[32px] sm:text-[46px] md:text-[56px] lg:text-[62px] leading-[1.18] font-silkscreen mb-6 tracking-normal red-glow-shadow"
+                        style={{ color: 'var(--ink)' }}
                     >
-                        Mohammed<br className="hidden sm:block" /> Huzaifa J
+                        MOHAMMED<br />HUZAIFA J
                     </h1>
 
-                    {/* Typewriter line */}
-                    <div
-                        className="flex items-center justify-center md:justify-start gap-2 mb-8"
-                        style={{ minHeight: '2rem' }}
-                    >
-                        <span
-                            style={{
-                                fontFamily: "'JetBrains Mono', monospace",
-                                fontSize: 'clamp(0.85rem, 2.2vw, 1.1rem)',
-                                color: 'var(--text-muted)',
-                                fontWeight: 500,
-                            }}
-                        >
-                            ~/role $&nbsp;
-                        </span>
-                        <span
-                            style={{
-                                fontFamily: "'JetBrains Mono', monospace",
-                                fontSize: 'clamp(0.85rem, 2.2vw, 1.1rem)',
-                                color: 'var(--accent)',
-                                fontWeight: 600,
-                            }}
-                        >
+                    {/* Role Line with Typewriter */}
+                    <div className="flex items-center gap-2 mb-3 text-xs sm:text-sm font-mono tracking-wider">
+                        <span style={{ color: 'var(--muted)' }}>~/role $</span>
+                        <span style={{ color: 'var(--maroon-bright)', fontWeight: 600 }}>
                             <Typewriter
                                 words={['Full Stack Developer', 'AI Enthusiast', 'LeetCode Student Ambassador']}
                                 loop={0}
                                 cursor
                                 cursorStyle='_'
                                 typeSpeed={60}
-                                deleteSpeed={40}
-                                delaySpeed={1500}
+                                deleteSpeed={35}
+                                delaySpeed={1600}
                             />
                         </span>
                     </div>
 
-                    {/* CTA Button */}
-                    <motion.a
-                        href="#projects"
-                        whileTap={{ scale: 0.97 }}
-                        className="brutalist-btn-accent self-center md:self-start"
+                    {/* Institution */}
+                    <div
+                        className="text-xs font-mono mb-6"
+                        style={{ color: 'var(--muted)', letterSpacing: '0.08em' }}
                     >
-                        View My Journey →
-                    </motion.a>
+                        Easwari Engineering College &bull; Chennai, India
+                    </div>
+
+                    {/* Description Paragraph */}
+                    <p
+                        className="text-sm sm:text-base leading-relaxed mb-8 max-w-xl font-normal"
+                        style={{ color: 'var(--muted)', lineHeight: '1.85' }}
+                    >
+                        Specializing in modern full-stack development, applied artificial intelligence, and algorithmic problem-solving. Passionate about architecting scalable systems and turning complex technical challenges into clean, high-impact digital experiences.
+                    </p>
+
+                    {/* Actions / CTA Buttons */}
+                    <div className="flex flex-wrap items-center gap-4">
+                        <a
+                            href="#projects"
+                            className="button-primary"
+                        >
+                            <span>EXPLORE WORK</span>
+                            <ArrowRight className="w-3.5 h-3.5" />
+                        </a>
+                        <a
+                            href="#contact"
+                            className="button-outline"
+                        >
+                            <span>GET IN TOUCH</span>
+                        </a>
+                    </div>
                 </motion.div>
 
-                {/* Profile Picture */}
+                {/* Right Column: Editorial Framed Profile Panel */}
                 <motion.div
-                    initial={{ scale: 0.5, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, type: "spring", stiffness: 80 }}
-                    className="order-1 md:order-2 flex-shrink-0"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                    className="lg:col-span-5 flex justify-center lg:justify-end"
                 >
                     <div
-                        className="relative overflow-hidden"
+                        className="w-full max-w-[380px] p-4 flex flex-col gap-4 scanline-overlay"
                         style={{
-                            width: 'clamp(180px, 28vw, 280px)',
-                            height: 'clamp(180px, 28vw, 280px)',
-                            border: '4px solid var(--border)',
-                            boxShadow: '8px 8px 0px var(--shadow)',
-                            borderRadius: '4px',
+                            backgroundColor: 'var(--panel)',
+                            border: '1px solid var(--line)',
                         }}
                     >
-                        <img
-                            src={profilePic}
-                            alt="Mohammed Huzaifa J"
-                            fetchPriority="high"
-                            loading="eager"
-                            className="w-full h-full object-cover"
-                        />
-                        {/* Corner accent */}
+                        {/* Panel Header */}
+                        <div className="flex items-center justify-between pb-3 border-b border-[#2a2523] text-[10px] font-mono tracking-widest uppercase">
+                            <span style={{ color: 'var(--muted)' }}>MHJ // TERMINAL-01</span>
+                            <div className="flex items-center gap-2">
+                                <span className="status-online" />
+                                <span style={{ color: 'var(--maroon-bright)' }}>ONLINE</span>
+                            </div>
+                        </div>
+
+                        {/* Framed Image */}
                         <div
-                            className="absolute bottom-0 left-0 right-0 py-1 px-2 flex items-center justify-between"
-                            style={{ backgroundColor: 'var(--accent)', borderTop: '2px solid var(--border)' }}
+                            className="relative h-[300px] w-full overflow-hidden"
+                            style={{
+                                border: '1px solid var(--maroon)',
+                                backgroundColor: 'var(--panel-alt)',
+                            }}
                         >
-                            <span
+                            <img
+                                src={profilePic}
+                                alt="Mohammed Huzaifa J"
+                                fetchPriority="high"
+                                className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                                 style={{
-                                    fontFamily: "'JetBrains Mono', monospace",
-                                    fontSize: '0.6rem',
-                                    fontWeight: 600,
-                                    letterSpacing: '0.1em',
-                                    textTransform: 'uppercase',
-                                    color: '#111111',
+                                    filter: 'contrast(1.05) brightness(0.95)',
+                                    objectPosition: '50% 25%',
+                                }}
+                            />
+                            {/* Subtle diagonal scanline overlay */}
+                            <div className="absolute inset-0 pointer-events-none scanline-overlay opacity-30" />
+
+                            {/* Bottom tag inside photo */}
+                            <div
+                                className="absolute bottom-0 left-0 right-0 py-1 px-3 flex items-center justify-between backdrop-blur-sm"
+                                style={{
+                                    backgroundColor: 'rgba(10, 9, 8, 0.85)',
+                                    borderTop: '1px solid var(--maroon)',
                                 }}
                             >
-                                MHJ // ENG-001
+                                <span className="text-[9px] font-mono tracking-widest uppercase text-[var(--ink)]">
+                                    MOHAMMED HUZAIFA J
+                                </span>
+                                <span className="text-[9px] font-mono tracking-widest text-[var(--maroon-bright)]">
+                                    DEV // 2026
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Telemetry / Equalizer Bar Motif & Readout */}
+                        <div className="pt-2 border-t border-[#2a2523] flex items-center justify-between">
+                            <div className="bar-motif">
+                                <i style={{ height: '6px' }} />
+                                <i style={{ height: '14px' }} />
+                                <i style={{ height: '10px' }} />
+                                <i style={{ height: '18px' }} />
+                                <i style={{ height: '12px' }} />
+                                <i style={{ height: '16px' }} />
+                                <i style={{ height: '8px' }} />
+                            </div>
+
+                            <span
+                                className="text-[9px] font-mono tracking-widest uppercase"
+                                style={{ color: 'var(--muted)' }}
+                            >
+                                660+ PROBLEMS &bull; 9.25 CGPA
                             </span>
-                            <span className="status-online" style={{ backgroundColor: '#111111', animationDuration: '2s' }} />
                         </div>
                     </div>
                 </motion.div>

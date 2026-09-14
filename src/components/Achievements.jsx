@@ -1,176 +1,100 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, FileText, GraduationCap } from 'lucide-react';
+import { Check, Trophy, FileCode, Award } from 'lucide-react';
 
-const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
+const achievementsList = [
+    {
+        badge: 'VERIFIED METRIC',
+        meta: 'LEETCODE / CODECHEF / GFG / HACKERRANK',
+        stat: '660+',
+        title: 'Algorithmic Problem Solving',
+        description: 'Solved over 660 algorithmic challenges across competitive programming platforms, building deep fluency in advanced data structures, graph algorithms, and space-time optimization.',
+    },
+    {
+        badge: 'INTELLECTUAL PROPERTY',
+        meta: 'PATENT FILED / AI INNOVATION',
+        stat: 'PATENT',
+        title: '"Purpose-Driven Local LLM Evaluator"',
+        description: 'Invented and filed intellectual property for an evaluation framework tailored to local Large Language Models, optimizing inference verification, domain suitability, and benchmark accuracy.',
+    },
+    {
+        badge: 'ACADEMIC MERIT',
+        meta: 'EASWARI ENGINEERING COLLEGE',
+        stat: '9.25',
+        title: 'Cumulative GPA Distinction',
+        description: 'Consistently maintained high academic standing in undergraduate engineering studies, bridging foundational computer science theory with hands-on systems development.',
+    },
+];
 
 const Achievements = () => {
     return (
         <section
             id="achievements"
-            className="w-full min-h-screen snap-always snap-center flex flex-col justify-center items-center px-4 py-20 transition-colors duration-300"
-            style={{ backgroundColor: 'var(--bg-primary)' }}
+            className="w-full py-24 md:py-32"
+            style={{ backgroundColor: 'var(--void)' }}
         >
-            {/* Section header */}
-            <div className="max-w-5xl w-full mb-12">
-                <div className="module-id mb-3">// SYS-ACH-001</div>
-                <h2 className="section-heading">Milestones &amp; Achievements</h2>
-                <div className="accent-bar mt-3" style={{ maxWidth: '120px' }} />
+            <div className="editorial-wrap">
+                {/* Section Header */}
+                <div className="section-heading-group">
+                    <span className="section-index">05</span>
+                    <h2 className="section-title">ACHIEVEMENTS</h2>
+                    <div className="section-rule" />
+                </div>
+
+                {/* Achievements Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+                    {achievementsList.map((item, idx) => (
+                        <motion.div
+                            key={item.title}
+                            initial={{ opacity: 0, y: 25 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, amount: 0.2 }}
+                            transition={{ duration: 0.5, delay: idx * 0.12 }}
+                            className="p-6 md:p-8 flex flex-col justify-between border border-[#2a2523] transition-all duration-300 hover:border-[var(--maroon)]"
+                            style={{ backgroundColor: 'var(--panel)' }}
+                        >
+                            <div>
+                                {/* Verified Badge */}
+                                <div className="flex items-center justify-between mb-5">
+                                    <span className="verified-badge">
+                                        <Check className="w-3 h-3 text-[var(--maroon-bright)]" />
+                                        <span>{item.badge}</span>
+                                    </span>
+                                </div>
+
+                                {/* Meta */}
+                                <div className="text-[10px] font-mono tracking-[0.12em] uppercase text-[var(--maroon-bright)] mb-4">
+                                    {item.meta}
+                                </div>
+
+                                {/* Large Stat Number / Highlight */}
+                                <div
+                                    className="font-silkscreen text-3xl sm:text-4xl text-[var(--ink)] mb-3 red-glow-shadow-sm"
+                                >
+                                    {item.stat}
+                                </div>
+
+                                {/* Subtitle */}
+                                <h3 className="text-base font-semibold text-[var(--ink)] mb-3">
+                                    {item.title}
+                                </h3>
+
+                                {/* Description */}
+                                <p className="text-xs sm:text-[13px] text-[var(--muted)] leading-[1.8]">
+                                    {item.description}
+                                </p>
+                            </div>
+
+                            <div className="pt-6 mt-6 border-t border-[#2a2523] flex items-center justify-between">
+                                <span className="text-[9px] font-mono tracking-widest text-[var(--muted)]">
+                                    MILESTONE / 0{idx + 1}
+                                </span>
+                                <span className="w-1.5 h-1.5 rounded-full bg-[var(--maroon-bright)]" />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-
-            <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl w-full"
-            >
-                {/* 660+ Problems */}
-                <motion.div
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="brutalist-card p-6 md:p-8 flex flex-col justify-between"
-                >
-                    <div>
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="module-id">METRIC-01</span>
-                            <div className="icon-box" style={{ color: 'var(--accent)' }}>
-                                <Trophy className="w-5 h-5" />
-                            </div>
-                        </div>
-
-                        <div className="accent-bar mb-6" />
-
-                        <motion.h3
-                            initial={{ scale: 0.8 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
-                            className="leading-none mb-2"
-                            style={{
-                                fontFamily: "'Barlow Condensed', sans-serif",
-                                fontWeight: 900,
-                                fontSize: 'clamp(3rem, 6vw, 4.5rem)',
-                                color: 'var(--text)',
-                                letterSpacing: '-0.02em',
-                            }}
-                        >
-                            660+
-                        </motion.h3>
-                        <p
-                            className="uppercase tracking-wider font-semibold text-sm mb-1"
-                            style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)' }}
-                        >
-                            Problems Solved
-                        </p>
-                    </div>
-
-                    <div className="pt-6 mt-6" style={{ borderTop: '1.5px solid var(--border-subtle)' }}>
-                        <p className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-muted)' }}>
-                            Across LeetCode, CodeChef, GFG &amp; HackerRank
-                        </p>
-                    </div>
-                </motion.div>
-
-                {/* Patent */}
-                <motion.div
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="brutalist-card p-6 md:p-8 flex flex-col justify-between"
-                >
-                    <div>
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="module-id">IP-FILE-01</span>
-                            <div className="icon-box" style={{ color: 'var(--accent)' }}>
-                                <FileText className="w-5 h-5" />
-                            </div>
-                        </div>
-
-                        <div className="accent-bar mb-6" />
-
-                        <h3
-                            className="leading-none mb-3"
-                            style={{
-                                fontFamily: "'Barlow Condensed', sans-serif",
-                                fontWeight: 800,
-                                fontSize: 'clamp(1.8rem, 3.5vw, 2.4rem)',
-                                color: 'var(--text)',
-                                textTransform: 'uppercase',
-                                letterSpacing: '-0.01em',
-                            }}
-                        >
-                            Patent Filed
-                        </h3>
-                        <p
-                            className="text-sm font-semibold mb-2"
-                            style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)' }}
-                        >
-                            "Purpose-Driven Local LLM Evaluator"
-                        </p>
-                    </div>
-
-                    <div className="pt-6 mt-6" style={{ borderTop: '1.5px solid var(--border-subtle)' }}>
-                        <p className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-muted)' }}>
-                            Innovation in AI Evaluation
-                        </p>
-                    </div>
-                </motion.div>
-
-                {/* CGPA */}
-                <motion.div
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02, y: -2 }}
-                    className="brutalist-card p-6 md:p-8 flex flex-col justify-between"
-                >
-                    <div>
-                        <div className="flex items-center justify-between mb-4">
-                            <span className="module-id">ACAD-01</span>
-                            <div className="icon-box" style={{ color: 'var(--accent)' }}>
-                                <GraduationCap className="w-5 h-5" />
-                            </div>
-                        </div>
-
-                        <div className="accent-bar mb-6" />
-
-                        <motion.h3
-                            initial={{ scale: 0.8 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ type: "spring", stiffness: 100, delay: 0.4 }}
-                            className="leading-none mb-2"
-                            style={{
-                                fontFamily: "'Barlow Condensed', sans-serif",
-                                fontWeight: 900,
-                                fontSize: 'clamp(3rem, 6vw, 4.5rem)',
-                                color: 'var(--text)',
-                                letterSpacing: '-0.02em',
-                            }}
-                        >
-                            9.25
-                        </motion.h3>
-                        <p
-                            className="uppercase tracking-wider font-semibold text-sm mb-1"
-                            style={{ fontFamily: "'JetBrains Mono', monospace", color: 'var(--accent)' }}
-                        >
-                            CGPA
-                        </p>
-                    </div>
-
-                    <div className="pt-6 mt-6" style={{ borderTop: '1.5px solid var(--border-subtle)' }}>
-                        <p className="text-xs" style={{ fontFamily: "'Inter', sans-serif", color: 'var(--text-muted)' }}>
-                            Easwari Engineering College
-                        </p>
-                    </div>
-                </motion.div>
-            </motion.div>
         </section>
     );
 };
