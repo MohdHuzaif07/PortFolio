@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
-import { ArrowRight, Terminal } from 'lucide-react';
+import { ArrowRight, FileDown } from 'lucide-react';
 import profilePic from '../assets/images/Professional_Pic.jpeg';
 
 const Hero = () => {
@@ -75,7 +75,7 @@ const Hero = () => {
                     </p>
 
                     {/* Actions / CTA Buttons */}
-                    <div className="flex flex-wrap items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-5">
                         <a
                             href="#projects"
                             className="button-primary"
@@ -89,6 +89,22 @@ const Hero = () => {
                         >
                             <span>GET IN TOUCH</span>
                         </a>
+                        <button
+                            type="button"
+                            className="text-action"
+                            onClick={() => {
+                                const link = document.createElement("a");
+                                link.href = "/Mohammed_Huzaifa_Resume.pdf";
+                                link.download = "Mohammed_Huzaifa_Resume.pdf";
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                            }}
+                            title="Download Mohammed Huzaifa's Resume"
+                        >
+                            <FileDown className="w-3.5 h-3.5 text-[var(--maroon-bright)]" />
+                            <span>DOWNLOAD RESUME</span>
+                        </button>
                     </div>
                 </motion.div>
 

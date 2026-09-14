@@ -189,6 +189,33 @@
         border-color: var(--maroon-bright);
     }
 
+    /* ── Text Action Button (Download Resume) ────────────── */
+    .text-action {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 0;
+        color: var(--muted);
+        border: 0;
+        background: none;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .text-action:hover {
+        color: var(--maroon-bright);
+        transform: translateY(-1px);
+    }
+
+    .text-action svg {
+        width: 14px;
+        height: 14px;
+    }
+
     /* ── Project Card with Technical Corner Brackets ─────── */
     .project-card {
         position: relative;
