@@ -19,38 +19,36 @@ const Experience = () => {
 
                 {/* Timeline */}
                 <div className="max-w-4xl mx-auto pt-6">
-                    <div
-                        className="relative ml-4 md:ml-6 pl-8 md:pl-12 py-2"
-                        style={{ borderLeft: '1px solid var(--maroon)' }}
-                    >
+                    <div className="ml-4 md:ml-6" style={{ borderLeft: '1px solid var(--maroon)' }}>
                         {/* Entry 1: LeetCode Student Ambassador */}
-                        <div
-                            className="absolute -left-[15px] top-0 w-[29px] h-[29px] grid place-items-center"
-                            style={{
-                                backgroundColor: 'var(--void)',
-                                border: '1px solid var(--maroon)',
-                                color: 'var(--maroon-bright)',
-                            }}
-                        >
-                            <Code2 className="w-3.5 h-3.5" />
-                        </div>
-
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.6 }}
-                            className="pb-16"
+                            className="relative pl-8 md:pl-12 pb-16"
                         >
+                            {/* Entry 1 Marker: aligned with role title */}
+                            <div
+                                className="absolute -left-[15px] top-[22px] w-[29px] h-[29px] grid place-items-center"
+                                style={{
+                                    backgroundColor: 'var(--void)',
+                                    border: '1px solid var(--maroon)',
+                                    color: 'var(--maroon-bright)',
+                                }}
+                            >
+                                <Code2 className="w-3.5 h-3.5" />
+                            </div>
+
                             {/* Metadata */}
-                            <div className="text-[10px] font-mono tracking-[0.14em] uppercase text-[var(--maroon-bright)] mb-3 flex flex-wrap items-center gap-2">
+                            <div className="text-[10px] font-mono tracking-[0.14em] uppercase text-[var(--maroon-bright)] mb-2 flex flex-wrap items-center gap-2">
                                 <span>COMMUNITY LEADERSHIP</span>
                                 <span>/</span>
                                 <span>LEETCODE &bull; EASWARI ENGINEERING COLLEGE</span>
                             </div>
 
                             {/* Role Heading */}
-                            <h3 className="text-xl sm:text-2xl font-semibold text-[var(--ink)] mb-1">
+                            <h3 className="text-xl sm:text-2xl font-semibold text-[var(--ink)] mb-1 leading-normal">
                                 LeetCode Student Ambassador
                             </h3>
 
@@ -86,33 +84,34 @@ const Experience = () => {
                         </motion.div>
 
                         {/* Entry 2: Green Intern */}
-                        <div
-                            className="absolute -left-[15px] top-[48%] md:top-[46%] w-[29px] h-[29px] grid place-items-center"
-                            style={{
-                                backgroundColor: 'var(--void)',
-                                border: '1px solid var(--maroon)',
-                                color: 'var(--maroon-bright)',
-                            }}
-                        >
-                            <Leaf className="w-3.5 h-3.5" />
-                        </div>
-
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, amount: 0.2 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="pb-4"
+                            className="relative pl-8 md:pl-12 pb-4"
                         >
+                            {/* Entry 2 Marker: aligned with Green Intern title */}
+                            <div
+                                className="absolute -left-[15px] top-[22px] w-[29px] h-[29px] grid place-items-center"
+                                style={{
+                                    backgroundColor: 'var(--void)',
+                                    border: '1px solid var(--maroon)',
+                                    color: 'var(--maroon-bright)',
+                                }}
+                            >
+                                <Leaf className="w-3.5 h-3.5" />
+                            </div>
+
                             {/* Metadata */}
-                            <div className="text-[10px] font-mono tracking-[0.14em] uppercase text-[var(--maroon-bright)] mb-3 flex flex-wrap items-center gap-2">
+                            <div className="text-[10px] font-mono tracking-[0.14em] uppercase text-[var(--maroon-bright)] mb-2 flex flex-wrap items-center gap-2">
                                 <span>INTERNSHIP</span>
                                 <span>/</span>
                                 <span>1M1B (1 MILLION FOR 1 BILLION)</span>
                             </div>
 
                             {/* Role Heading */}
-                            <h3 className="text-xl sm:text-2xl font-semibold text-[var(--ink)] mb-1">
+                            <h3 className="text-xl sm:text-2xl font-semibold text-[var(--ink)] mb-1 leading-normal">
                                 Green Intern
                             </h3>
 
@@ -122,9 +121,7 @@ const Experience = () => {
                             </div>
 
                             {/* Description */}
-                            <p
-                                className="text-sm sm:text-[14px] leading-[1.85] text-[var(--muted)] mb-5 max-w-3xl"
-                            >
+                            <p className="text-sm sm:text-[14px] leading-[1.85] text-[var(--muted)] mb-5 max-w-3xl">
                                 Engaged in a purpose-driven internship focused on global sustainability challenges. Developed core problem-solving methodologies to tackle real-world climate and operational issues. The experience honed my ability to fuse technological solutions with sustainable, long-term impact strategies.
                             </p>
 

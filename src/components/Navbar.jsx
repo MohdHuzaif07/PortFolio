@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, FileDown } from 'lucide-react';
+import resumePdf from '../assets/Mohammed_Huzaifa_Resume.pdf';
 
 const navItems = [
     { label: 'HOME', href: '#hero' },
@@ -99,8 +100,10 @@ const Navbar = ({ scrollProgress }) => {
 
                     {/* Resume download in desktop nav */}
                     <a
-                        href="/Mohammed_Huzaifa_Resume.pdf"
+                        href={resumePdf}
                         download="Mohammed_Huzaifa_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-2.5 py-1 border border-[var(--maroon)] text-[10px] font-mono tracking-widest uppercase text-[var(--maroon-bright)] hover:bg-[var(--maroon)] hover:text-[var(--ink)] transition-all ml-1"
                         title="Download Resume"
                     >
@@ -145,8 +148,10 @@ const Navbar = ({ scrollProgress }) => {
                     })}
 
                     <a
-                        href="/Mohammed_Huzaifa_Resume.pdf"
+                        href={resumePdf}
                         download="Mohammed_Huzaifa_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => setMobileOpen(false)}
                         className="inline-flex items-center justify-center gap-2 py-2.5 mt-2 border border-[var(--maroon)] text-xs font-mono tracking-widest uppercase text-[var(--maroon-bright)] bg-[rgba(140,36,56,0.1)] hover:bg-[var(--maroon)] hover:text-[var(--ink)] transition-all"
                     >

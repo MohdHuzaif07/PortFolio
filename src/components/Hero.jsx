@@ -3,6 +3,7 @@ import { Typewriter } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 import { ArrowRight, FileDown } from 'lucide-react';
 import profilePic from '../assets/images/Professional_Pic.jpeg';
+import resumePdf from '../assets/Mohammed_Huzaifa_Resume.pdf';
 
 const Hero = () => {
     return (
@@ -94,8 +95,9 @@ const Hero = () => {
                             className="text-action"
                             onClick={() => {
                                 const link = document.createElement("a");
-                                link.href = "/Mohammed_Huzaifa_Resume.pdf";
+                                link.href = resumePdf;
                                 link.download = "Mohammed_Huzaifa_Resume.pdf";
+                                link.target = "_blank";
                                 document.body.appendChild(link);
                                 link.click();
                                 document.body.removeChild(link);
